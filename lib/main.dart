@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutterNews/src/pages/kalimera_splash.dart';
 import 'package:flutterNews/src/pages/kalimera_home.dart';
 import 'package:flutterNews/src/transitions/fade_in_transition.dart';

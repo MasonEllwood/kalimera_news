@@ -16,7 +16,6 @@ class _KalimeraHomeState extends State<KalimeraHome> {
 
     List<dynamic> _getSliderNewsArticles = Provider.of<KalimeraNewsList>(context).getSliderNewsArticles();
     List<dynamic> _getRemainderNewsArticles = Provider.of<KalimeraNewsList>(context).getRemainderNewsArticles();
-    print(_getRemainderNewsArticles);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -48,64 +47,69 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                             items: _getSliderNewsArticles.map((i) {
                               return Builder(
                                 builder: (BuildContext context) {
-                                  return Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: NetworkImage("${i.urlToImage}"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                      borderRadius: new BorderRadius.only(
-                                        topLeft: Radius.circular(20.0),
-                                        topRight: Radius.circular(20.0),
-                                        bottomLeft: Radius.circular(20.0),
-                                        bottomRight: Radius.circular(20.0),
-                                      ),
-                                      boxShadow: kElevationToShadow[2],
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.all(10),
-                                          padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(20.0),
-                                              topRight: Radius.circular(20.0),
-                                              bottomLeft: Radius.circular(20.0),
-                                              bottomRight: Radius.circular(20.0),
-                                            ),
-                                            boxShadow: kElevationToShadow[2],
-                                          ),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                titleChecker(i.title.trim()),
-                                                style: KalimeraTextStyles.questrialLightForest18px,
-                                              ),
-                                              SizedBox(height: 25),
-                                              Row(
-                                                crossAxisAlignment: CrossAxisAlignment.end,
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    authorChecker(i.author.trim()),
-                                                    style: KalimeraTextStyles.signikaLightForest13px,
-                                                  ),
-                                                  Text(
-                                                    sourceChecker(i.source.trim()),
-                                                    style: KalimeraTextStyles.signikaLightForest13px,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
+                                  return GestureDetector(
+                                    onTap: (){
+                                      Navigator.pushNamed(context, '/inner');
+                                    },
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: NetworkImage("${i.urlToImage}"),
+                                          fit: BoxFit.cover,
                                         ),
-                                      ],
+                                        borderRadius: new BorderRadius.only(
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0),
+                                          bottomLeft: Radius.circular(20.0),
+                                          bottomRight: Radius.circular(20.0),
+                                        ),
+                                        boxShadow: kElevationToShadow[2],
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.all(10),
+                                            padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(20.0),
+                                                topRight: Radius.circular(20.0),
+                                                bottomLeft: Radius.circular(20.0),
+                                                bottomRight: Radius.circular(20.0),
+                                              ),
+                                              boxShadow: kElevationToShadow[2],
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  titleChecker(i.title.trim()),
+                                                  style: KalimeraTextStyles.questrialLightForest18px,
+                                                ),
+                                                SizedBox(height: 25),
+                                                Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      authorChecker(i.author.trim()),
+                                                      style: KalimeraTextStyles.signikaLightForest13px,
+                                                    ),
+                                                    Text(
+                                                      sourceChecker(i.source.trim()),
+                                                      style: KalimeraTextStyles.signikaLightForest13px,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   );
                                 },
@@ -119,56 +123,61 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                 physics: NeverScrollableScrollPhysics(),
                                 itemCount: _getRemainderNewsArticles.length,
                                 itemBuilder: (context, index) {
-                                  return Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: MediaQuery.of(context).size.width * 0.25,
-                                        height: MediaQuery.of(context).size.width * 0.30,
-                                        margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: NetworkImage("${_getRemainderNewsArticles[index].urlToImage}"),
-                                            fit: BoxFit.cover,
-                                          ),
-                                          borderRadius: new BorderRadius.only(
-                                            topLeft: Radius.circular(20.0),
-                                            topRight: Radius.circular(20.0),
-                                            bottomLeft: Radius.circular(20.0),
-                                            bottomRight: Radius.circular(20.0),
-                                          ),
-                                          boxShadow: kElevationToShadow[2],
-                                        ),
-                                      ),
-                                      Container(
-                                        width: MediaQuery.of(context).size.width * 0.60,
-                                        height: MediaQuery.of(context).size.width * 0.25,
-                                        margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 30),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              titleChecker(_getRemainderNewsArticles[index].title),
-                                              style: KalimeraTextStyles.questrialLightForest18px,
+                                  return GestureDetector(
+                                    onTap: (){
+                                      Navigator.pushNamed(context, '/inner');
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          width: MediaQuery.of(context).size.width * 0.25,
+                                          height: MediaQuery.of(context).size.width * 0.30,
+                                          margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: NetworkImage("${_getRemainderNewsArticles[index].urlToImage}"),
+                                              fit: BoxFit.cover,
                                             ),
-                                            SizedBox(height: 25),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  authorChecker(_getRemainderNewsArticles[index].author),
-                                                  style: KalimeraTextStyles.signikaLightForest13px,
-                                                ),
-                                                Text(
-                                                  sourceChecker(_getRemainderNewsArticles[index].source),                                                  
-                                                  style: KalimeraTextStyles.signikaLightForest13px,
-                                                ),
-                                              ],
+                                            borderRadius: new BorderRadius.only(
+                                              topLeft: Radius.circular(20.0),
+                                              topRight: Radius.circular(20.0),
+                                              bottomLeft: Radius.circular(20.0),
+                                              bottomRight: Radius.circular(20.0),
                                             ),
-                                          ],
+                                            boxShadow: kElevationToShadow[2],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        Container(
+                                          width: MediaQuery.of(context).size.width * 0.60,
+                                          height: MediaQuery.of(context).size.width * 0.25,
+                                          margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 30),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                titleChecker(_getRemainderNewsArticles[index].title),
+                                                style: KalimeraTextStyles.questrialLightForest18px,
+                                              ),
+                                              SizedBox(height: 25),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    authorChecker(_getRemainderNewsArticles[index].author),
+                                                    style: KalimeraTextStyles.signikaLightForest13px,
+                                                  ),
+                                                  Text(
+                                                    sourceChecker(_getRemainderNewsArticles[index].source),                                                  
+                                                    style: KalimeraTextStyles.signikaLightForest13px,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   );
                               }
                             ),

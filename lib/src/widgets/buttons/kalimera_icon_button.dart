@@ -22,7 +22,7 @@ class KalmeraIconButton extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(6.0),
               child: Icon(
-                Icons.menu,
+                Icons.arrow_back_ios,
                 color: KalimeraColors.lightforest,
                 size: 30.0,
               ),

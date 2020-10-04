@@ -17,6 +17,6 @@ class FadeIn extends PageRouteBuilder {
         child: child,
       );
     },
-    transitionDuration: Duration(milliseconds: 800) 
+    transitionDuration: Duration(milliseconds: 200) 
   );
 }

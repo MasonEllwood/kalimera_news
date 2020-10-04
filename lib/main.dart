@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterNews/src/pages/kalimera_inner_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutterNews/src/pages/kalimera_splash.dart';
 import 'package:flutterNews/src/pages/kalimera_home.dart';
@@ -24,6 +25,8 @@ class Kalimera extends StatelessWidget {
               return FadeIn(KalimeraSlash(), settings);
             case '/home':
               return FadeIn(KalimeraHome(), settings);
+            case '/inner':
+              return FadeIn(KalimeraInnerPage(), settings);
             case '/':
             default:
               return FadeIn(KalimeraHome(), settings);

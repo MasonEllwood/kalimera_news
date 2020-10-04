@@ -25,7 +25,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
           builder: (BuildContext context, BoxConstraints constraints){
             return Column(
               children: <Widget> [
-                KalimeraHeader(),                
+                KalimeraHeader(),
                 Expanded(
                   child: Container(
                     child: Padding(
@@ -81,6 +81,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                             boxShadow: kElevationToShadow[2],
                                           ),
                                           child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 titleChecker(i.title.trim()),
@@ -88,6 +89,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                               ),
                                               SizedBox(height: 25),
                                               Row(
+                                                crossAxisAlignment: CrossAxisAlignment.end,
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
                                                   Text(
@@ -110,7 +112,6 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                               );
                             }).toList(),
                           ),
-                          
                           Container(
                             margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                             child: ListView.builder(
@@ -122,7 +123,6 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        // margin: EdgeInsets.all(20),
                                         width: MediaQuery.of(context).size.width * 0.25,
                                         height: MediaQuery.of(context).size.width * 0.30,
                                         margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
@@ -141,15 +141,11 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                         ),
                                       ),
                                       Container(
-                                        // margin: EdgeInsets.all(20),
                                         width: MediaQuery.of(context).size.width * 0.60,
                                         height: MediaQuery.of(context).size.width * 0.25,
                                         margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 30),
-                                        decoration: BoxDecoration(
-                                          // color: Colors.white,
-                                          // boxShadow: kElevationToShadow[2],
-                                        ),
                                         child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               titleChecker(_getRemainderNewsArticles[index].title),
@@ -158,7 +154,6 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                             SizedBox(height: 25),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              crossAxisAlignment: CrossAxisAlignment.end,
                                               children: [
                                                 Text(
                                                   authorChecker(_getRemainderNewsArticles[index].author),

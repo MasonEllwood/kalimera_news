@@ -12,17 +12,17 @@ class KalimeraHeader extends StatelessWidget {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: KalmeraIconButton(
-                      onTap: (){
-                        print('Menu Clicked');
-                      }
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.centerLeft,
+                //   child: Padding(
+                //     padding: const EdgeInsets.all(8.0),
+                //     child: KalmeraIconButton(
+                //       onTap: (){
+                //         print('Menu Clicked');
+                //       }
+                //     ),
+                //   ),
+                // ),
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(

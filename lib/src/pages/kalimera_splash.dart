@@ -15,7 +15,7 @@ class _KalimeraSlashState extends State<KalimeraSlash> {
   Widget build(BuildContext context) {
     return SplashScreen(
       title: Text( 'Kalimera', style: KalimeraTextStyles.questrialWhite45px ),
-      seconds: 1,
+      seconds: 3,
       navigateAfterSeconds: KalimeraHome(),
       backgroundColor: KalimeraColors.lightblue,
       styleTextUnderTheLoader: new TextStyle(),

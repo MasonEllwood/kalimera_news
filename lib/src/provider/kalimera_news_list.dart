@@ -17,7 +17,7 @@ class KalimeraNewsList with ChangeNotifier {
   Future getNews() async {
     try {
       // response
-      Response response = await _dio.get('http://newsapi.org/v2/everything?q=cute-animals&from=2020-09-04&sortBy=popularity&language=en&apiKey=8e59d6419c654154961ff30fb7bd6a40');
+      Response response = await _dio.get('http://newsapi.org/v2/everything?q=random&from=2020-09-04&sortBy=popularity&language=en&apiKey=8e59d6419c654154961ff30fb7bd6a40');
       for (int i = 0; i < response.data['articles'].length; i++) {
         _newsList.add(KalimeraNews.fromJson(response.data['articles'][i])); 
       }

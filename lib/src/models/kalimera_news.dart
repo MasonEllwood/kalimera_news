@@ -19,4 +19,14 @@ class KalimeraNews {
     this.publishedAt,
     this.content,
   });
+
+  KalimeraNews.fromJson(Map<String, dynamic> json)  
+    : source = json['source']['name'],
+      author = json['author'],
+      title = json['title'],
+      description = json['description'],
+      url = json['url'],
+      urlToImage = json['urlToImage'],
+      publishedAt = json['publishedAt'],
+      content = json['content'];
 }

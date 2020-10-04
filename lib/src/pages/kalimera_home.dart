@@ -14,7 +14,6 @@ class _KalimeraHomeState extends State<KalimeraHome> {
   @override
   Widget build(BuildContext context) {
 
-    // List<dynamic> _getAllNewsArticles = Provider.of<KalimeraNewsList>(context).getAllNewsArticles();
     List<dynamic> _getSliderNewsArticles = Provider.of<KalimeraNewsList>(context).getSliderNewsArticles();
     List<dynamic> _getRemainderNewsArticles = Provider.of<KalimeraNewsList>(context).getRemainderNewsArticles();
     print(_getRemainderNewsArticles);
@@ -50,7 +49,6 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                               return Builder(
                                 builder: (BuildContext context) {
                                   return Container(
-                                    // margin: EdgeInsets.all(20),
                                     width: MediaQuery.of(context).size.width,
                                     margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
                                     decoration: BoxDecoration(
@@ -85,7 +83,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                           child: Column(
                                             children: [
                                               Text(
-                                                '${i.title}', 
+                                                titleChecker(i.title.trim()),
                                                 style: KalimeraTextStyles.questrialLightForest18px,
                                               ),
                                               SizedBox(height: 25),
@@ -93,11 +91,11 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
                                                   Text(
-                                                    'Author: ${i.author}', 
+                                                    authorChecker(i.author.trim()),
                                                     style: KalimeraTextStyles.signikaLightForest13px,
                                                   ),
                                                   Text(
-                                                    '${i.source}', 
+                                                    sourceChecker(i.source.trim()),
                                                     style: KalimeraTextStyles.signikaLightForest13px,
                                                   ),
                                                 ],
@@ -154,7 +152,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                         child: Column(
                                           children: [
                                             Text(
-                                              '${_getRemainderNewsArticles[index].title}', 
+                                              titleChecker(_getRemainderNewsArticles[index].title),
                                               style: KalimeraTextStyles.questrialLightForest18px,
                                             ),
                                             SizedBox(height: 25),
@@ -163,11 +161,11 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                               crossAxisAlignment: CrossAxisAlignment.end,
                                               children: [
                                                 Text(
-                                                  'Author: ${_getRemainderNewsArticles[index].author}', 
+                                                  authorChecker(_getRemainderNewsArticles[index].author),
                                                   style: KalimeraTextStyles.signikaLightForest13px,
                                                 ),
                                                 Text(
-                                                  '${_getRemainderNewsArticles[index].source}', 
+                                                  sourceChecker(_getRemainderNewsArticles[index].source),                                                  
                                                   style: KalimeraTextStyles.signikaLightForest13px,
                                                 ),
                                               ],
@@ -193,4 +191,41 @@ class _KalimeraHomeState extends State<KalimeraHome> {
       ),
     );
   }
+
+  String titleChecker(title) {
+    if (title != null) {
+      if (title.length > 60) {
+        return '${(title).substring(0, 60)}...';
+      } else {
+        return title;
+      }
+    } else {
+      return 'No Title';
+    }   
+  }
+
+  String authorChecker(author) {
+    if (author != null) {
+      if (author.length > 20) {
+        return '${(author).substring(0, 20)}...';
+      } else {
+        return author;
+      }
+    } else {
+      return 'No Author';
+    }   
+  }
+
+  String sourceChecker(source) {
+    if (source != null) {
+      if (source.length > 20) {
+        return '${(source).substring(0, 20)}...';
+      } else {
+        return source;
+      }
+    } else {
+      return 'No Source';
+    }   
+  }
+
 }

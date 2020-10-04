@@ -1,160 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutterNews/src/models/kalimera_news.dart';
+import 'package:dio/dio.dart';
 
 class KalimeraNewsList with ChangeNotifier {
-  
-  List<KalimeraNews> _newsList = [
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle2",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle3",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle4",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle5",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle6",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle7",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle8",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle9",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle10",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle11",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle12",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle13",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle14",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-    KalimeraNews(
-      source: "ESPN",
-      author: "Harry Kettle15",
-      title: "Kepa, Christensen both 4/10 as mistakes haunt Chelsea vs. Liverpool",
-      description: "Andreas Christensen was sent off, Kepa Arrizabalaga made another mistake and Jorginho missed a penalty in Chelsea's hapless 2-0 defeat to Liverpool",
-      url: "https://www.espn.com/soccer/chelsea/story/4184204/kepachristensen-both-4-10-as-mistakes-haunt-chelsea-vs-liverpool",
-      urlToImage: "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2020%2F0920%2Fr748486_1296x729_16%2D9.jpg",
-      publishedAt: "2020-09-20T18:09:23Z",
-      content: "Chelsea fell to their first loss of the new Premier League season as they were beaten 2-0 by Liverpool at Stamford Bridge on Sunday. Andreas Christensen's red card just before half-time completely a… [+4446 chars]",
-    ),
-  ];
+
+  // creates recipes list on main load.
+  KalimeraNewsList(){
+    getNews();
+  }
+
+  // init dio
+  final Dio _dio = Dio();
+
+  List<KalimeraNews> _newsList = List();
+
+  Future getNews() async {
+    try {
+      // response
+      Response response = await _dio.get('http://newsapi.org/v2/everything?q=cute-animals&from=2020-09-04&sortBy=popularity&language=en&apiKey=8e59d6419c654154961ff30fb7bd6a40');
+      for (int i = 0; i < response.data['articles'].length; i++) {
+        _newsList.add(KalimeraNews.fromJson(response.data['articles'][i])); 
+      }
+      print(_newsList);
+      return(_newsList);
+    } catch(e){
+      print(e.toString());
+    }
+  }
 
   // all news articles
   List getAllNewsArticles(){

@@ -173,7 +173,7 @@ class KalimeraNewsList with ChangeNotifier {
   // gets remainder of list
   List getRemainderNewsArticles(){
     List _firstFiveList = [];
-    for(var i=0; i <= _newsList.length++; i++) {
+    for(var i=5; i < _newsList.length; i++) {
       _firstFiveList.add(_newsList[i]);
     }
     return _firstFiveList;

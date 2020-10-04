@@ -17,7 +17,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
     // List<dynamic> _getAllNewsArticles = Provider.of<KalimeraNewsList>(context).getAllNewsArticles();
     List<dynamic> _getSliderNewsArticles = Provider.of<KalimeraNewsList>(context).getSliderNewsArticles();
     List<dynamic> _getRemainderNewsArticles = Provider.of<KalimeraNewsList>(context).getRemainderNewsArticles();
-    print(_getRemainderNewsArticles.length);
+    print(_getRemainderNewsArticles);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -86,7 +86,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                             children: [
                                               Text(
                                                 '${i.title}', 
-                                                style: KalimeraTextStyles.questrialBlack18px,
+                                                style: KalimeraTextStyles.questrialLightForest18px,
                                               ),
                                               SizedBox(height: 25),
                                               Row(
@@ -94,11 +94,11 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                                 children: [
                                                   Text(
                                                     'Author: ${i.author}', 
-                                                    style: KalimeraTextStyles.signikaGrey13px,
+                                                    style: KalimeraTextStyles.signikaLightForest13px,
                                                   ),
                                                   Text(
                                                     '${i.source}', 
-                                                    style: KalimeraTextStyles.signikaGrey13px,
+                                                    style: KalimeraTextStyles.signikaLightForest13px,
                                                   ),
                                                 ],
                                               ),
@@ -113,40 +113,73 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                             }).toList(),
                           ),
                           
-                          // ListView.builder(
-                          //     shrinkWrap: true,
-                          //     itemCount: _getRemainderNewsArticles.length,
-                          //     itemBuilder: (context, index) {
-                          //       return new Text('fuck');
-                          //   }
-                          // ),
-                          
-                          // Column(
-                          //   children: _getRemainderNewsArticles.map((i) {
-                          //     Row(
-                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //     children: [
-                          //       Container(
-                          //         margin: EdgeInsets.all(10),
-                          //         padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
-                          //         decoration: BoxDecoration(
-                          //           image: DecorationImage(
-                          //             image: NetworkImage("${i.urlToImage}"),
-                          //             fit: BoxFit.cover,
-                          //           ),
-                          //           color: Colors.white,
-                          //           borderRadius: BorderRadius.only(
-                          //             topLeft: Radius.circular(20.0),
-                          //             topRight: Radius.circular(20.0),
-                          //             bottomLeft: Radius.circular(20.0),
-                          //             bottomRight: Radius.circular(20.0),
-                          //           ),
-                          //           boxShadow: kElevationToShadow[2],
-                          //         ),
-                          //       ),
-                          //     ],
-                          //   );
-                          // }).toList()),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: _getRemainderNewsArticles.length,
+                                itemBuilder: (context, index) {
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        // margin: EdgeInsets.all(20),
+                                        width: MediaQuery.of(context).size.width * 0.25,
+                                        height: MediaQuery.of(context).size.width * 0.30,
+                                        margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: NetworkImage("${_getRemainderNewsArticles[index].urlToImage}"),
+                                            fit: BoxFit.cover,
+                                          ),
+                                          borderRadius: new BorderRadius.only(
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                            bottomLeft: Radius.circular(20.0),
+                                            bottomRight: Radius.circular(20.0),
+                                          ),
+                                          boxShadow: kElevationToShadow[2],
+                                        ),
+                                      ),
+                                      Container(
+                                        // margin: EdgeInsets.all(20),
+                                        width: MediaQuery.of(context).size.width * 0.60,
+                                        height: MediaQuery.of(context).size.width * 0.25,
+                                        margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 30),
+                                        decoration: BoxDecoration(
+                                          // color: Colors.white,
+                                          // boxShadow: kElevationToShadow[2],
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              '${_getRemainderNewsArticles[index].title}', 
+                                              style: KalimeraTextStyles.questrialLightForest18px,
+                                            ),
+                                            SizedBox(height: 25),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  'Author: ${_getRemainderNewsArticles[index].author}', 
+                                                  style: KalimeraTextStyles.signikaLightForest13px,
+                                                ),
+                                                Text(
+                                                  '${_getRemainderNewsArticles[index].source}', 
+                                                  style: KalimeraTextStyles.signikaLightForest13px,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                              }
+                            ),
+                          ),
                           
                         ],
                       ),

@@ -14,6 +14,13 @@ class KalimeraTextStyles {
     fontSize: 18.0,
     color: Colors.black,
   );
+
+  static const TextStyle questrialLightForest18px = TextStyle(
+    fontFamily: 'Questrial',
+    fontSize: 18.0,
+    color: KalimeraColors.lightforest,
+    fontWeight: FontWeight.w600,
+  );
   
   static const TextStyle signikaGrey13px = TextStyle(
     fontFamily: 'Signika',
@@ -21,5 +28,21 @@ class KalimeraTextStyles {
     fontWeight: FontWeight.w600,
     color: KalimeraColors.grey,
   );
+
+  static const TextStyle signikaLightPink13px = TextStyle(
+    fontFamily: 'Signika',
+    fontSize: 13.0,
+    fontWeight: FontWeight.w600,
+    color: KalimeraColors.lightpink,
+  );
+
+  static const TextStyle signikaLightForest13px = TextStyle(
+    fontFamily: 'Signika',
+    fontSize: 13.0,
+    // fontWeight: FontWeight.w600,
+    color: KalimeraColors.lightforest,
+  );
+
+  
 
 }

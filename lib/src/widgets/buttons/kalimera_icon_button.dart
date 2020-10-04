@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterNews/src/styles/kalimera_colors.dart';
 
 typedef OnTap = void Function();
 
@@ -22,7 +23,7 @@ class KalmeraIconButton extends StatelessWidget {
               padding: const EdgeInsets.all(6.0),
               child: Icon(
                 Icons.menu,
-                color: Colors.black,
+                color: KalimeraColors.lightforest,
                 size: 30.0,
               ),
             ),

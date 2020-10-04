@@ -19,7 +19,7 @@ class KalmeraGetDate extends StatelessWidget {
             padding: const EdgeInsets.all(6.0),
             child: Text(
               "$finalDate",
-              style: KalimeraTextStyles.questrialBlack18px
+              style: KalimeraTextStyles.questrialLightForest18px,
             ),
           ),
         );

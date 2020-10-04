@@ -14,5 +14,12 @@ class KalimeraTextStyles {
     fontSize: 18.0,
     color: Colors.black,
   );
+  
+  static const TextStyle signikaGrey13px = TextStyle(
+    fontFamily: 'Signika',
+    fontSize: 13.0,
+    fontWeight: FontWeight.w600,
+    color: KalimeraColors.grey,
+  );
 
 }

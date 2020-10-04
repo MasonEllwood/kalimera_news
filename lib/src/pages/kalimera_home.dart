@@ -3,6 +3,7 @@ import 'package:flutterNews/src/widgets/general/kalimera_header.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutterNews/src/provider/kalimera_news_list.dart';
 import 'package:provider/provider.dart';
+import 'package:flutterNews/src/styles/kalimera_text_styles.dart';
 
 class KalimeraHome extends StatefulWidget {
   @override
@@ -12,9 +13,12 @@ class KalimeraHome extends StatefulWidget {
 class _KalimeraHomeState extends State<KalimeraHome> {
   @override
   Widget build(BuildContext context) {
-    
-    List<dynamic> _newsList = Provider.of<KalimeraNewsList>(context).getAllNewsArticles();
-    
+
+    // List<dynamic> _getAllNewsArticles = Provider.of<KalimeraNewsList>(context).getAllNewsArticles();
+    List<dynamic> _getSliderNewsArticles = Provider.of<KalimeraNewsList>(context).getSliderNewsArticles();
+    List<dynamic> _getRemainderNewsArticles = Provider.of<KalimeraNewsList>(context).getRemainderNewsArticles();
+    print(_getRemainderNewsArticles.length);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -35,14 +39,20 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                             options: CarouselOptions(
                               height: 400.0,
                               initialPage: 0,
-                              enableInfiniteScroll: false,
+                              enableInfiniteScroll: true,
+                              enlargeCenterPage: true,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 8),
+                              autoPlayAnimationDuration: Duration(milliseconds: 800),
+                              autoPlayCurve: Curves.fastOutSlowIn,
                             ),
-                            items: _newsList.map((i) {
+                            items: _getSliderNewsArticles.map((i) {
                               return Builder(
                                 builder: (BuildContext context) {
                                   return Container(
+                                    // margin: EdgeInsets.all(20),
                                     width: MediaQuery.of(context).size.width,
-                                    margin: EdgeInsets.symmetric(horizontal: 15.0),
+                                    margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         image: NetworkImage("${i.urlToImage}"),
@@ -53,7 +63,8 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                         topRight: Radius.circular(20.0),
                                         bottomLeft: Radius.circular(20.0),
                                         bottomRight: Radius.circular(20.0),
-                                      )
+                                      ),
+                                      boxShadow: kElevationToShadow[2],
                                     ),
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
@@ -68,31 +79,26 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                               topRight: Radius.circular(20.0),
                                               bottomLeft: Radius.circular(20.0),
                                               bottomRight: Radius.circular(20.0),
-                                            )
+                                            ),
+                                            boxShadow: kElevationToShadow[2],
                                           ),
                                           child: Column(
                                             children: [
                                               Text(
                                                 '${i.title}', 
-                                                style: TextStyle(
-                                                  fontSize: 16.0
-                                                ),
+                                                style: KalimeraTextStyles.questrialBlack18px,
                                               ),
-                                              SizedBox(height: 20),
+                                              SizedBox(height: 25),
                                               Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
                                                   Text(
-                                                    '${i.author}', 
-                                                    style: TextStyle(
-                                                      fontSize: 16.0
-                                                    ),
+                                                    'Author: ${i.author}', 
+                                                    style: KalimeraTextStyles.signikaGrey13px,
                                                   ),
                                                   Text(
                                                     '${i.source}', 
-                                                    style: TextStyle(
-                                                      fontSize: 16.0
-                                                    ),
+                                                    style: KalimeraTextStyles.signikaGrey13px,
                                                   ),
                                                 ],
                                               ),
@@ -106,6 +112,42 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                               );
                             }).toList(),
                           ),
+                          
+                          // ListView.builder(
+                          //     shrinkWrap: true,
+                          //     itemCount: _getRemainderNewsArticles.length,
+                          //     itemBuilder: (context, index) {
+                          //       return new Text('fuck');
+                          //   }
+                          // ),
+                          
+                          // Column(
+                          //   children: _getRemainderNewsArticles.map((i) {
+                          //     Row(
+                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //     children: [
+                          //       Container(
+                          //         margin: EdgeInsets.all(10),
+                          //         padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                          //         decoration: BoxDecoration(
+                          //           image: DecorationImage(
+                          //             image: NetworkImage("${i.urlToImage}"),
+                          //             fit: BoxFit.cover,
+                          //           ),
+                          //           color: Colors.white,
+                          //           borderRadius: BorderRadius.only(
+                          //             topLeft: Radius.circular(20.0),
+                          //             topRight: Radius.circular(20.0),
+                          //             bottomLeft: Radius.circular(20.0),
+                          //             bottomRight: Radius.circular(20.0),
+                          //           ),
+                          //           boxShadow: kElevationToShadow[2],
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   );
+                          // }).toList()),
+                          
                         ],
                       ),
                     ),

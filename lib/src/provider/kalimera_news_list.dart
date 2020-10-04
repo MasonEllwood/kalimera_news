@@ -156,8 +156,27 @@ class KalimeraNewsList with ChangeNotifier {
     ),
   ];
 
+  // all news articles
   List getAllNewsArticles(){
     return _newsList;
+  }
+
+  // slider list
+  List getSliderNewsArticles(){
+    List _firstFiveList = [];
+    for(var i=0; i <= 4; i++) {
+      _firstFiveList.add(_newsList[i]);
+    }
+    return _firstFiveList;
+  }
+  
+  // gets remainder of list
+  List getRemainderNewsArticles(){
+    List _firstFiveList = [];
+    for(var i=0; i <= _newsList.length++; i++) {
+      _firstFiveList.add(_newsList[i]);
+    }
+    return _firstFiveList;
   }
   
   KalimeraNews getNewsArticles(int index){

@@ -10,4 +10,6 @@ class KalimeraColors {
   static const Color lightpink = const Color(0xFFBB8A89);
 
   static const Color offWhite = const Color(0xFFF1F1F1);
+  static const Color grey = const Color(0xFF8f8f8f);
+
 }

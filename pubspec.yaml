@@ -55,3 +55,6 @@ flutter:
     - family: Questrial
       fonts:
         - asset: assets/fonts/Questrial-Regular.ttf
+    - family: Signika
+      fonts:
+        - asset: assets/fonts/Signika-VariableFont_wght.ttf

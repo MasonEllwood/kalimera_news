@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterNews/src/widgets/general/kalimera_header.dart';
+import 'package:provider/provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutterNews/src/provider/kalimera_news_list.dart';
-import 'package:provider/provider.dart';
 import 'package:flutterNews/src/styles/kalimera_text_styles.dart';
+import 'package:flutterNews/src/widgets/general/kalimera_header.dart';
 
 class KalimeraHome extends StatefulWidget {
   @override
@@ -22,6 +22,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
     List<dynamic> _getRemainderNewsArticles = _newsList.getRemainderNewsArticles();
 
     return Scaffold(
+      
       backgroundColor: Colors.white,
       body: SafeArea(
         child: LayoutBuilder(
@@ -53,7 +54,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                 builder: (BuildContext context) {
                                   return GestureDetector(
                                     onTap: (){
-                                      // _newsList.selected = counter;
+                                      _newsList.selected = _getSliderNewsArticles.indexOf(i);
                                       Navigator.pushNamed(context, '/inner');
                                     },
                                     child: Container(

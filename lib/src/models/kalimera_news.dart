@@ -1,5 +1,6 @@
 
 class KalimeraNews {
+  int id;
   String source;
   String author;
   String title;
@@ -10,6 +11,7 @@ class KalimeraNews {
   String content;
 
   KalimeraNews({
+    this.id,
     this.source,
     this.author,
     this.title,

@@ -21,6 +21,7 @@ class KalimeraNewsList with ChangeNotifier {
       for (int i = 0; i < response.data['articles'].length; i++) {
         _newsList.add(KalimeraNews.fromJson(response.data['articles'][i])); 
       }
+      print(_newsList[1]);
       return(_newsList);
     } catch(e){
       print(e.toString());
@@ -50,7 +51,7 @@ class KalimeraNewsList with ChangeNotifier {
     return _firstFiveList;
   }
   
-  KalimeraNews getNewsArticles(int index){
+  KalimeraNews getNewsArticle(int index){
     return _newsList[index];
   }
 

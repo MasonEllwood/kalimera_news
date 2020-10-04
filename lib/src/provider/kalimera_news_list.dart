@@ -54,10 +54,16 @@ class KalimeraNewsList with ChangeNotifier {
     return _newsList[index];
   }
 
-  int _selectedIndex = -1;
+  int _selected = -1;
 
-  int get selectedIndex {
-    return this._selectedIndex;
+  int get selected {
+    return this._selected;
+  }
+
+  set selected(int selected) {
+    this._selected = selected;
+    print(_selected);
+    notifyListeners();
   }
 
   int length(){

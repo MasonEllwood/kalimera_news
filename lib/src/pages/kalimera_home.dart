@@ -11,11 +11,15 @@ class KalimeraHome extends StatefulWidget {
 }
 
 class _KalimeraHomeState extends State<KalimeraHome> {
+  
+  KalimeraNewsList _newsList;
+
   @override
   Widget build(BuildContext context) {
 
-    List<dynamic> _getSliderNewsArticles = Provider.of<KalimeraNewsList>(context).getSliderNewsArticles();
-    List<dynamic> _getRemainderNewsArticles = Provider.of<KalimeraNewsList>(context).getRemainderNewsArticles();
+    _newsList = Provider.of<KalimeraNewsList>(context);
+    List<dynamic> _getSliderNewsArticles = _newsList.getSliderNewsArticles();
+    List<dynamic> _getRemainderNewsArticles = _newsList.getRemainderNewsArticles();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -49,6 +53,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                 builder: (BuildContext context) {
                                   return GestureDetector(
                                     onTap: (){
+                                      // _newsList.selected = counter;
                                       Navigator.pushNamed(context, '/inner');
                                     },
                                     child: Container(
@@ -125,6 +130,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     onTap: (){
+                                      _newsList.selected = index + 5;
                                       Navigator.pushNamed(context, '/inner');
                                     },
                                     child: Row(

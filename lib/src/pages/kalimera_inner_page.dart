@@ -3,6 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:flutterNews/src/widgets/general/kalimera_inner_header.dart';
 import 'package:flutterNews/src/provider/kalimera_news_list.dart';
 import 'package:flutterNews/src/styles/kalimera_text_styles.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'dart:async';
+import 'package:url_launcher/url_launcher.dart';
 
 class KalimeraInnerPage extends StatefulWidget {
   @override
@@ -91,9 +94,21 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
                                   ),
                                   SizedBox(height: 25),
                                   Text(
-                                    _newsList.getNewsArticle(_newsList.selected).content,
+                                    sourceContent(_newsList.getNewsArticle(_newsList.selected).content),
                                     style: KalimeraTextStyles.questrialLightForest18px,
                                   ),
+                                  // Center(
+                                  //   child: Linkify(
+                                  //     onOpen: _onOpen,
+                                  //     text: sourceContent(_newsList.getNewsArticle(_newsList.selected).content),
+                                  //   ),
+                                  // ),
+                                  // Center(
+                                  //   child: SelectableLinkify(
+                                  //     onOpen: _onOpen,
+                                  //     text: sourceContent(_newsList.getNewsArticle(_newsList.selected).content),
+                                  //   ),
+                                  // ),
                                   SizedBox(height: 25),
                                 ],
                               ),
@@ -110,6 +125,14 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
         )
       ),
     );
+  }
+
+  Future<void> _onOpen(LinkableElement link) async {
+    if (await canLaunch(link.url)) {
+      await launch(link.url);
+    } else {
+      throw 'Could not launch $link';
+    }
   }
 
   String titleChecker(title) {
@@ -147,5 +170,18 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
       return 'No Source';
     }   
   }
+
+  String sourceContent(content) {
+    if (content != null) {
+      if (content.length > 200) {
+        return '${(content).substring(0, 200)}[Full Article]';
+      } else {
+        return content;
+      }
+    } else {
+      return 'No content';
+    }   
+  }
+  
 
 }

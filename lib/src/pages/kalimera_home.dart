@@ -206,7 +206,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
   String titleChecker(title) {
     if (title != null) {
       if (title.length > 60) {
-        return '${(title).substring(0, 60)}...';
+        return '${(title).substring(0, 60)}';
       } else {
         return title;
       }
@@ -218,7 +218,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
   String authorChecker(author) {
     if (author != null) {
       if (author.length > 20) {
-        return '${(author).substring(0, 20)}...';
+        return '${(author).substring(0, 20)}';
       } else {
         return author;
       }
@@ -230,7 +230,7 @@ class _KalimeraHomeState extends State<KalimeraHome> {
   String sourceChecker(source) {
     if (source != null) {
       if (source.length > 20) {
-        return '${(source).substring(0, 20)}...';
+        return '${(source).substring(0, 20)}';
       } else {
         return source;
       }

@@ -3,9 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutterNews/src/widgets/general/kalimera_inner_header.dart';
 import 'package:flutterNews/src/provider/kalimera_news_list.dart';
 import 'package:flutterNews/src/styles/kalimera_text_styles.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-import 'dart:async';
-import 'package:url_launcher/url_launcher.dart';
+
 
 class KalimeraInnerPage extends StatefulWidget {
   @override
@@ -95,20 +93,8 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
                                   SizedBox(height: 25),
                                   Text(
                                     sourceContent(_newsList.getNewsArticle(_newsList.selected).content),
-                                    style: KalimeraTextStyles.questrialLightForest18px,
+                                    style: KalimeraTextStyles.questrialLightForest24px,
                                   ),
-                                  // Center(
-                                  //   child: Linkify(
-                                  //     onOpen: _onOpen,
-                                  //     text: sourceContent(_newsList.getNewsArticle(_newsList.selected).content),
-                                  //   ),
-                                  // ),
-                                  // Center(
-                                  //   child: SelectableLinkify(
-                                  //     onOpen: _onOpen,
-                                  //     text: sourceContent(_newsList.getNewsArticle(_newsList.selected).content),
-                                  //   ),
-                                  // ),
                                   SizedBox(height: 25),
                                 ],
                               ),
@@ -127,18 +113,10 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
     );
   }
 
-  Future<void> _onOpen(LinkableElement link) async {
-    if (await canLaunch(link.url)) {
-      await launch(link.url);
-    } else {
-      throw 'Could not launch $link';
-    }
-  }
-
   String titleChecker(title) {
     if (title != null) {
       if (title.length > 60) {
-        return '${(title).substring(0, 60)}...';
+        return '${(title).substring(0, 60)}';
       } else {
         return title;
       }
@@ -150,7 +128,7 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
   String authorChecker(author) {
     if (author != null) {
       if (author.length > 20) {
-        return '${(author).substring(0, 20)}...';
+        return '${(author).substring(0, 20)}';
       } else {
         return author;
       }
@@ -162,7 +140,7 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
   String sourceChecker(source) {
     if (source != null) {
       if (source.length > 20) {
-        return '${(source).substring(0, 20)}...';
+        return '${(source).substring(0, 20)}';
       } else {
         return source;
       }
@@ -174,7 +152,7 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
   String sourceContent(content) {
     if (content != null) {
       if (content.length > 200) {
-        return '${(content).substring(0, 200)}[Full Article]';
+        return '${(content).substring(0, 200)}';
       } else {
         return content;
       }
@@ -183,5 +161,4 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
     }   
   }
   
-
 }

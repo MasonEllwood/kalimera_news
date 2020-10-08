@@ -21,6 +21,19 @@ class KalimeraTextStyles {
     color: KalimeraColors.lightforest,
     fontWeight: FontWeight.w600,
   );
+
+  static const TextStyle questrialLightForest24px = TextStyle(
+    fontFamily: 'Questrial',
+    fontSize: 24.0,
+    color: KalimeraColors.lightforest,
+    fontWeight: FontWeight.w300,
+  );
+
+  static const TextStyle questrial60px = TextStyle(
+    fontFamily: 'Questrial',
+    fontSize: 60.0,
+    fontWeight: FontWeight.w300,
+  );
   
   static const TextStyle signikaGrey13px = TextStyle(
     fontFamily: 'Signika',

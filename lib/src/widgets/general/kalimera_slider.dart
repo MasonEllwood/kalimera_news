@@ -14,6 +14,7 @@ class KalimeraSlider extends StatelessWidget {
     List<dynamic> _firstFiveList = [];
     for(var i=0; i <= 4; i++) {
       _firstFiveList.add(_getAllNewsArticles[i]);
+      print(_firstFiveList[i].author);
     }
 
     return CarouselSlider(
@@ -104,7 +105,7 @@ class KalimeraSlider extends StatelessWidget {
   String titleChecker(title) {
     if (title != null) {
       if (title.length > 60) {
-        return '${(title).substring(0, 60)}';
+        return '${(title).substring(0, 60)}...';
       } else {
         return title;
       }
@@ -128,7 +129,7 @@ class KalimeraSlider extends StatelessWidget {
   String sourceChecker(source) {
     if (source != null) {
       if (source.length > 20) {
-        return '${(source).substring(0, 20)}';
+        return '${(source).substring(0, 20)}...';
       } else {
         return source;
       }

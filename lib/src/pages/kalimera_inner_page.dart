@@ -44,18 +44,11 @@ class _KalimeraInnerPageState extends State<KalimeraInnerPage> {
                                 image: NetworkImage("${_newsList.getNewsArticle(_newsList.selected).urlToImage}"),
                                 fit: BoxFit.cover,
                               ),
-                              borderRadius: new BorderRadius.only(
-                                topLeft: Radius.circular(40.0),
-                                topRight: Radius.circular(40.0),
-                                bottomLeft: Radius.circular(0.0),
-                                bottomRight: Radius.circular(0.0),
-                              ),
                             ),
                           ),
                           Align(
                             heightFactor: .6,
                             child: Container(
-                              // height: 150.0,
                               width: MediaQuery.of(context).size.width,
                               padding: EdgeInsets.fromLTRB(20, 60, 20, 30),
                               margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0),

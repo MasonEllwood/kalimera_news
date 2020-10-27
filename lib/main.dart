@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterNews/src/pages/kalimera_inner_page.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterNews/src/pages/kalimera_splash.dart';
+import 'package:flutterNews/src/widgets/news_feed/kalimera_splash.dart';
 import 'package:flutterNews/src/pages/kalimera_home.dart';
 import 'package:flutterNews/src/transitions/fade_in_transition.dart';
 import 'package:flutterNews/src/provider/kalimera_news_list.dart';
@@ -18,12 +18,12 @@ class Kalimera extends StatelessWidget {
       context,
       MaterialApp(
         title: 'Kalimera App',
-        initialRoute: '/splash',
+        initialRoute: '/',
         onGenerateRoute: (settings) {
           switch (settings.name) {
-            case '/splash':
-              return FadeIn(KalimeraSlash(), settings);
-            case '/home':
+            // case '/splash':
+            //   return FadeIn(KalimeraSplash(), settings);
+            case '/':
               return FadeIn(KalimeraHome(), settings);
             case '/inner':
               return FadeIn(KalimeraInnerPage(), settings);

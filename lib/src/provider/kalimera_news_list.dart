@@ -4,9 +4,15 @@ import 'package:dio/dio.dart';
 
 class KalimeraNewsList with ChangeNotifier {
 
-  // creates recipes list on main load.
-  KalimeraNewsList(){
-    getNews();
+  String _searchTerm = '';
+  
+  String get searchTerm {
+    return this._searchTerm;
+  }
+
+  set text(String text) {
+    this._searchTerm = text;
+    notifyListeners();
   }
 
   // init dio
@@ -15,13 +21,16 @@ class KalimeraNewsList with ChangeNotifier {
   List<KalimeraNews> _newsList = List();
 
   Future getNews() async {
+    String sanitizedSearchTerm = searchTerm.trim().replaceAll(RegExp(' +'), '-').toLowerCase();
+    print(sanitizedSearchTerm);
     try {
       // response
-      Response response = await _dio.get('http://newsapi.org/v2/everything?q=random&from=2020-09-05&sortBy=popularity&language=en&apiKey=8e59d6419c654154961ff30fb7bd6a40');
+      Response response = await _dio.get('http://newsapi.org/v2/everything?q=$sanitizedSearchTerm&from=2020-27-10&sortBy=popularity&language=en&apiKey=8e59d6419c654154961ff30fb7bd6a40');
       for (int i = 0; i < response.data['articles'].length; i++) {
         _newsList.add(KalimeraNews.fromJson(response.data['articles'][i])); 
       }
       print(_newsList[1]);
+      notifyListeners();
       return(_newsList);
     } catch(e){
       print(e.toString());

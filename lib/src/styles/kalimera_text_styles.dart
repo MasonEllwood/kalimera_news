@@ -32,7 +32,8 @@ class KalimeraTextStyles {
   static const TextStyle questrial60px = TextStyle(
     fontFamily: 'Questrial',
     fontSize: 60.0,
-    fontWeight: FontWeight.w300,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
   );
   
   static const TextStyle signikaGrey13px = TextStyle(

@@ -6,7 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
-import 'package:flutterNews/src/pages/kalimera_splash.dart';
+import 'package:flutterNews/src/widgets/news_feed/kalimera_splash.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutterNews/main.dart';
@@ -14,7 +14,7 @@ import 'package:flutterNews/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(KalimeraSlash());
+    await tester.pumpWidget(KalimeraSplash());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

@@ -4,18 +4,17 @@ import 'package:provider/provider.dart';
 import 'package:flutterNews/src/provider/kalimera_news_list.dart';
 import 'package:flutterNews/src/styles/kalimera_text_styles.dart';
 
-class KalimeraSlider extends StatefulWidget {
-  @override
-  _KalimeraSliderState createState() => _KalimeraSliderState();
-}
-
-class _KalimeraSliderState extends State<KalimeraSlider> {
-
+class KalimeraSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
-    KalimeraNewsList _newsList = Provider.of<KalimeraNewsList>(context);
-    List<dynamic> _getSliderNewsArticles = _newsList.getSliderNewsArticles();
+  KalimeraNewsList _newsList = Provider.of<KalimeraNewsList>(context);
+  List<dynamic> _getAllNewsArticles = _newsList.getAllNewsArticles();
+
+    // slider list
+    List<dynamic> _firstFiveList = [];
+    for(var i=0; i <= 4; i++) {
+      _firstFiveList.add(_getAllNewsArticles[i]);
+    }
 
     return CarouselSlider(
       options: CarouselOptions(
@@ -28,12 +27,12 @@ class _KalimeraSliderState extends State<KalimeraSlider> {
         autoPlayAnimationDuration: Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
       ),
-      items: _getSliderNewsArticles.map((i) {
+      items: _firstFiveList.map((i) {
         return Builder(
           builder: (BuildContext context) {
             return GestureDetector(
               onTap: (){
-                _newsList.selected = _getSliderNewsArticles.indexOf(i);
+                _newsList.selected = _firstFiveList.indexOf(i);
                 Navigator.pushNamed(context, '/inner');
               },
               child: Container(

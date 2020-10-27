@@ -3,24 +3,24 @@ import 'package:flutterNews/src/styles/kalimera_text_styles.dart';
 import 'package:provider/provider.dart';
 import 'package:flutterNews/src/provider/kalimera_news_list.dart';
 
-class KalimeraStream extends StatefulWidget {
-  @override
-  _KalimeraStreamState createState() => _KalimeraStreamState();
-}
-
-class _KalimeraStreamState extends State<KalimeraStream> {
+class KalimeraStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
     KalimeraNewsList _newsList = Provider.of<KalimeraNewsList>(context);
-    List<dynamic> _getRemainderNewsArticles = _newsList.getRemainderNewsArticles();
+    List<dynamic> _getAllNewsArticles = _newsList.getAllNewsArticles();
+  
+    List _firstFiveList = [];
+    for(var i=5; i < _getAllNewsArticles.length; i++) {
+      _firstFiveList.add(_getAllNewsArticles[i]);
+    }
     
     return Container(
       margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
       child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
-        itemCount: _getRemainderNewsArticles.length,
+        itemCount: _firstFiveList.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: (){
@@ -36,7 +36,7 @@ class _KalimeraStreamState extends State<KalimeraStream> {
                   margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage("${_getRemainderNewsArticles[index].urlToImage}"),
+                      image: NetworkImage("${_firstFiveList[index].urlToImage}"),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: new BorderRadius.only(
@@ -56,7 +56,7 @@ class _KalimeraStreamState extends State<KalimeraStream> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        titleChecker(_getRemainderNewsArticles[index].title),
+                        titleChecker(_firstFiveList[index].title),
                         style: KalimeraTextStyles.questrialLightForest18px,
                       ),
                       SizedBox(height: 25),
@@ -64,11 +64,11 @@ class _KalimeraStreamState extends State<KalimeraStream> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            authorChecker(_getRemainderNewsArticles[index].author),
+                            authorChecker(_firstFiveList[index].author),
                             style: KalimeraTextStyles.signikaLightForest13px,
                           ),
                           Text(
-                            sourceChecker(_getRemainderNewsArticles[index].source),                                                  
+                            sourceChecker(_firstFiveList[index].source),                                                  
                             style: KalimeraTextStyles.signikaLightForest13px,
                           ),
                         ],

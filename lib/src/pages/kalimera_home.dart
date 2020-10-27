@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:flutterNews/src/styles/kalimera_colors.dart';
 import 'package:flutterNews/src/widgets/general/kalimera_header.dart';
 import 'package:flutterNews/src/widgets/news_feed/kalimera_body.dart';
 import 'package:provider/provider.dart';

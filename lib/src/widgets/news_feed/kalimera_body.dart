@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutterNews/src/provider/kalimera_news_list.dart';
-import 'package:flutterNews/src/widgets/input/kalimera_search.dart';
+import 'package:flutterNews/src/widgets/input/kalimera_search_live.dart';
 import 'package:flutterNews/src/widgets/general/kalimera_slider.dart';
 import 'package:flutterNews/src/widgets/general/kalimera_stream.dart';
 
@@ -28,7 +28,7 @@ class _KalimeraBodyState extends State<KalimeraBody> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 15),
-                child: KalimeraSearchBar(
+                child: KalimeraSearchBarLive(
                   key: key,
                   initialText: _newsList.searchTerm,
                   onChanged: (value) {

@@ -23,10 +23,13 @@ class KalimeraNewsList with ChangeNotifier {
   Future getNews() async {
     String sanitizedSearchTerm = searchTerm.trim().replaceAll(RegExp(' +'), '-').toLowerCase();
     _newsList.clear();
-    // print(sanitizedSearchTerm);
     try {
       // response
-      Response response = await _dio.get('http://newsapi.org/v2/everything?q=$sanitizedSearchTerm&from=2020-27-10&sortBy=popularity&language=en&apiKey=8e59d6419c654154961ff30fb7bd6a40');
+      // to do: add dynamic date
+      // company
+      Response response = await _dio.get('http://newsapi.org/v2/everything?q=$sanitizedSearchTerm&from=2020-27-10&sortBy=popularity&language=en&apiKey=221a1b2dad0e4ef3803994417113e58c');
+      // personal
+      // Response response = await _dio.get('http://newsapi.org/v2/everything?q=$sanitizedSearchTerm&from=2020-27-10&sortBy=popularity&language=en&apiKey=8e59d6419c654154961ff30fb7bd6a40');
       for (int i = 0; i < response.data['articles'].length; i++) {
         _newsList.add(KalimeraNews.fromJson(response.data['articles'][i])); 
       }
